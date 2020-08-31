@@ -7,7 +7,7 @@ This project is for learning how to use web components and is not a fully featur
 * This doesn't reflect best practices for any of the technologies used
 
 ## Prerequisites
-* You must have [link](https://docs.docker.com/get-docker/, Docker) installed to use this
+* You must have [Docker](https://docs.docker.com/get-docker) installed to use this
 
 ## How to Start
 1. Clone the Repo
