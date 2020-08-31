@@ -41,4 +41,4 @@ You should open up "localhost:4200" instead to access the application.
 * This doesn't reflect best practices for any of the technologies used or application design in general
 * This code will be modified until Sept 1st but how [How to Start](#how-to-start) should work regardless
 * Code reflects a "finished" state at the moment and will be updated to allow you to do the work by Sept 1st
-* Task List is Subject to Change
+* [Tasks](#tasks) are subject to change
