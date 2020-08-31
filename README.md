@@ -29,7 +29,7 @@ You should open up "localhost:4200" instead to access the application.
 
 ## Tasks
 - [ ] Create Skill Selector Component
-- [ ] Add Base Component to index.html
+- [ ] Add Skill Selector Component to index.html
 - [ ] Capture Input from Skill Search Component and Update Suggestions
 - [ ] Handle "Add" button from Skill Search Component
 - [ ] Check added skill to see if it's valid before adding it to list
