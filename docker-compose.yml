@@ -1,0 +1,28 @@
+version: "3.8" 
+services: 
+  monster-hunter-data:
+    image: neo4j:latest
+    environment:
+      - NEO4J_AUTH=none
+    volumes:
+      - ./database:/var/lib/neo4j/import
+    expose:
+      - "7474"
+      - "7687"
+    
+  monster-hunter-data-loader:
+    image: neo4j:latest
+    volumes:
+      - ./database:/var/lib/neo4j/import
+    depends_on: 
+      - monster-hunter-data
+    command: 'bash import/import-data.sh'
+  
+  monster-hunter-ui:
+    image: node:10
+    working_dir: /home/node/app
+    volumes: 
+      - ./application/:/home/node/app
+    ports: 
+      - "8000:8000"
+    command: npm start

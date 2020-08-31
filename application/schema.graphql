@@ -1,0 +1,8 @@
+type Query {
+  skills(name: String, limit: Int): [Skill],
+  skill(name: String!): Skill
+}
+
+type Skill {
+  name: String
+}
