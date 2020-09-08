@@ -1,8 +1,14 @@
 type Query {
   skills(name: String, limit: Int): [Skill],
-  skill(name: String!): Skill
+  skill(name: String!): Skill,
+  armors(skills: [String]): [Armor]
 }
 
 type Skill {
   name: String
+}
+
+type Armor {
+  name: String,
+  slot: String
 }

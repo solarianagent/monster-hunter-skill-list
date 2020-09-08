@@ -39,10 +39,20 @@ async function startService() {
       });
 
       return results[0].skill.properties;
-    }
+    },
+    armors: async({skills}) => {
+      const results = await query({
+        query: 'MATCH(skill:Skill {language:"en"})-[:ATTACHED_TO]->(armor) WHERE skill.name IN $skills RETURN armor',
+        params: {skills}
+      });
+
+      return results.map(result => result.armor.properties);
+    } 
   }
 
   app.use(express.static(__dirname + '/ui'));
+
+  app.use(express.static(__dirname + '/node_modules/bulma/css'))
 
   app.use('/graphql', graphqlHTTP({ schema, rootValue, graphiql: true }));
 

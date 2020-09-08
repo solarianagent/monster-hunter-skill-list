@@ -1,6 +1,12 @@
 # Monster Hunter Skill List
 This project is for learning how to use web components and is not a fully featured application.
 
+## Presentation
+https://docs.google.com/presentation/d/1ifQuh5GzomO07gq4yOoHT_oxtTnnv1jgTGsQhx_w-J8
+
+## Data Source
+CSV files are from https://github.com/gatheringhallstudios/MHWorldData, check them out if you want monster hunter world data.
+
 ## Prerequisites
 * You must have [Docker](https://docs.docker.com/get-docker) installed to use this
 

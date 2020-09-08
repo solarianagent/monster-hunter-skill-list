@@ -4,8 +4,12 @@ services:
     image: neo4j:latest
     environment:
       - NEO4J_AUTH=none
+      - NEO4J_dbms_memory_heap_max__size=1G
     volumes:
       - ./database:/var/lib/neo4j/import
+    ports:
+      - 7474:7474
+      - 7687:7687
     expose:
       - "7474"
       - "7687"
