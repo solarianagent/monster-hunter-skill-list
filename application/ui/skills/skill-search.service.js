@@ -12,8 +12,8 @@ class SkillSearchService {
   }
 
   async getSkill(skillName) {
-    const {skill} = (await graphQlQueryService.query(`{skill(name:"${skillName}"){name}}`));
-    return skill.name;
+    const {skill} = (await graphQlQueryService.query(`{skill(name:"${skillName}"){name,description}}`));
+    return skill;
   }
 }
 

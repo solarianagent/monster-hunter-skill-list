@@ -1,25 +1,54 @@
 class AppComponent extends HTMLElement {
-  /** @type Element */
-  mainElement;
-
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
-    this.mainElement = document.createElement('main');
-    this.shadowRoot.appendChild(this.mainElement);
-    this.switchComponent('skill-selector');
+    const mainElement = document.createElement('main');
+    this.shadowRoot.appendChild(mainElement);
+
+    this.switchComponent(mainElement, './skills/skill-search.component.js', 'app-skill-search')
+      .then(appSkillSearch => {
+        appSkillSearch.addEventListener(
+          'listItemSelected', 
+          ({detail}) => this.switchToSkillInfoComponent(detail, mainElement)
+        );
+      });
   }
 
-  async switchComponent(componentName) {
-    await import(`./${componentName}/${componentName}.component.js`);
+  /**
+   * Switchs to the Skill Info Component
+   * @param {string} skillName - the skill name to load
+   * @param {string} mainElement - the element to add the skill info to
+   */
+  async switchToSkillInfoComponent(skillName, mainElement) {
+    await this.switchComponent(
+      mainElement,
+      './skills/skill-info.component.js', 
+      'app-skill-info', 
+      {skillName}
+    );
+  }
+
+  /**
+   * 
+   * @param {Element} mainElement the main element of the page
+   * @param {string} filepath filepath of the component you want to load
+   * @param {string} tag the tag name of the tag
+   * @param {object} attributes a map of strings with the attribute name as the key and the value as the value
+   */
+  async switchComponent(mainElement, filepath, tag, attributes={}) {
+    await import(filepath);
     
-    if (this.mainElement.firstChild) {
-      this.mainElement.removeChild(this.mainElement.firstChild);
+    if (mainElement.firstChild) {
+      mainElement.removeChild(mainElement.firstChild);
     }
 
-    const currentElement = document.createElement(`app-${componentName}`);
-    this.mainElement.appendChild(currentElement);
-    currentElement.addEventListener('switchComponent', ({detail}) => this.switchComponent(detail));
+    const attributesText = Object.entries(attributes)
+      .map(([key, value]) => `${key}="${value}"`)
+      .join(' ');
+
+    mainElement.innerHTML = `<${tag} ${attributesText}></${tag}>`;
+
+    return mainElement.firstChild;
   }
 }
 
