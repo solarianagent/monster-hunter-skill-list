@@ -7,6 +7,7 @@ class AppComponent extends HTMLElement {
       <style>
         :host {
           display: flex;
+          height:100%;
         }
         aside {
           background-color: #555555;
