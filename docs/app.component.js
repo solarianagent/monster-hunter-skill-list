@@ -10,7 +10,6 @@ class AppComponent extends HTMLElement {
           height:100%;
         }
         aside {
-          background-color: #555555;
           flex: 1;
         }
 
@@ -18,7 +17,8 @@ class AppComponent extends HTMLElement {
           flex: 3;
         }
       </style>
-      <aside>
+      <aside class="nes-container is-dark with-title">
+        <p class="title">Steps</p>
         <nav></nav>
       </aside>
       <main></main>
